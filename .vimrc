@@ -169,6 +169,26 @@ endtry
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+"""""""""""""""
+""" Plugins """
+"""""""""""""""
+
+" Enable Pathogen
+execute pathogen#infect()
+
+" Enable CtrlP
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" Open NERDTree automatically on start
+autocmd vimenter * NERDTree
+
+" Close VIM when the only window left is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Change NERDTree default arrows
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
+
 """"""""""""""""""""""""
 """ Helper Functions """
 """"""""""""""""""""""""
