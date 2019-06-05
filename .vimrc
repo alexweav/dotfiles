@@ -169,6 +169,13 @@ endtry
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+"""""""""""""""
+""" Plugins """
+"""""""""""""""
+
+" Enable CtrlP
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
 """"""""""""""""""""""""
 """ Helper Functions """
 """"""""""""""""""""""""
