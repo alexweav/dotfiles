@@ -170,6 +170,13 @@ endtry
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 """""""""""""""
+""" Editing """
+"""""""""""""""
+
+" Trim trailing whitespace on save
+autocmd BufWritePre * :call TrimWhiteSpace()
+
+"""""""""""""""
 """ Plugins """
 """""""""""""""
 
@@ -198,5 +205,11 @@ function! HasPaste()
         return 'PASTE MODE  '
     endif
     return ''
+endfunction
+
+function! TrimWhiteSpace()
+    let saved_view = winsaveview()
+    keepjumps '[,']s/\s\+$//e
+    call winrestview(saved_view)
 endfunction
 
