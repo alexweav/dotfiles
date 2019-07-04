@@ -196,6 +196,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 
+" Show dotfiles in NERDTree
+let NERDTreeShowHidden=1
+
 """"""""""""""""""""""""
 """ Helper Functions """
 """"""""""""""""""""""""
