@@ -1,5 +1,5 @@
-URxvt.font: xft:bitstream vera sans mono:size=12:antialias=true
-URxvt.boldFont: xft:bitstream vera sans mono:bold:size=12:antialias=true
+URxvt.font: xft:bitstream vera sans mono:size=10:antialias=true
+URxvt.boldFont: xft:bitstream vera sans mono:bold:size=10:antialias=true
 
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
