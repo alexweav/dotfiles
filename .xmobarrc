@@ -1,5 +1,32 @@
 Config {
+    font = "xft:bitstream vera sans mono:size=10:antialias=true",
+    bgColor = "black",
+    fgColor = "grey",
+    position = Top,
+    border = BottomB,
+    borderColor = "grey",
+    lowerOnStart = True,  -- Send to bottom of window stack on start
+    allDesktops = True,  -- Show on all desktops
+
+    sepChar = "%",
+    alignSep = "}{",
+    template = "%StdinReader% }{ %battery% | %date%",
+
     commands = [
-        Run StdinReader
+        Run StdinReader,
+        Run Date "%b %d %Y (%a)  %_I:%M:%S %p" "date" 10,
+        Run Battery [
+            "--template", "<acstatus>",
+            "--Low", "10",
+            "--High", "80",
+            "--low", "darkred",
+            "--normal", "darkorange",
+            "--high", "darkgreen",
+            "--",
+            "-o", "<left>% (<timeleft> left)",
+            "-O", "<left>% Charging...",
+            "-i", "<left>% Charged!"
+        ] 50
     ]
 }
+
