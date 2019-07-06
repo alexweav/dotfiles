@@ -2,6 +2,7 @@ import XMonad
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Layout.Spacing
 import XMonad.Util.Cursor
 import XMonad.Util.Run
 
@@ -31,7 +32,14 @@ myStartupHook = do {
 
 myManageHook = manageDocks <+> manageHook defaultConfig
 
-myLayoutHook = avoidStruts $ layoutHook defaultConfig
+-- Spacing around the edge of the screen
+screenSpacing = (Border 5 5 5 5)
+-- Spacing around the edge of each window
+windowSpacing = (Border 5 5 5 5)
+
+mySpacing = spacingRaw True screenSpacing True windowSpacing True
+
+myLayoutHook = avoidStruts $ mySpacing $ layoutHook defaultConfig
 
 myHandleEventHook = handleEventHook defaultConfig <+> docksEventHook
 
