@@ -2,6 +2,7 @@ import XMonad
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
 import XMonad.Util.Cursor
 import XMonad.Util.Run
@@ -20,7 +21,7 @@ main = do
     }
 
 myTerminal = "urxvt"
-myBorderWidth = 3
+myBorderWidth = 2
 
 -- Windows key for xmonad actions
 myModMask = mod4Mask
@@ -39,7 +40,7 @@ windowSpacing = (Border 5 5 5 5)
 
 mySpacing = spacingRaw True screenSpacing True windowSpacing True
 
-myLayoutHook = avoidStruts $ mySpacing $ layoutHook defaultConfig
+myLayoutHook = avoidStruts $ mySpacing $ smartBorders $ layoutHook defaultConfig
 
 myHandleEventHook = handleEventHook defaultConfig <+> docksEventHook
 
