@@ -34,9 +34,9 @@ myStartupHook = do {
 myManageHook = manageDocks <+> manageHook defaultConfig
 
 -- Spacing around the edge of the screen
-screenSpacing = (Border 5 5 5 5)
+screenSpacing = (Border 10 10 10 10)
 -- Spacing around the edge of each window
-windowSpacing = (Border 5 5 5 5)
+windowSpacing = (Border 10 10 10 10)
 
 mySpacing = spacingRaw True screenSpacing True windowSpacing True
 
