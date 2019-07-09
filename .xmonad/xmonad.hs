@@ -5,6 +5,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
 import XMonad.Util.Cursor
+import XMonad.Util.EZConfig
 import XMonad.Util.Run
 
 main = do
@@ -18,7 +19,9 @@ main = do
         terminal = myTerminal,
         modMask = myModMask,
         borderWidth = myBorderWidth
-    }
+    } `additionalKeys` [
+        ((0, xK_Print), spawn "scrot")
+        ]
 
 myTerminal = "urxvt"
 myBorderWidth = 2
