@@ -5,6 +5,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
 import XMonad.Util.Cursor
+import XMonad.Util.EZConfig
 import XMonad.Util.Run
 
 main = do
@@ -18,7 +19,9 @@ main = do
         terminal = myTerminal,
         modMask = myModMask,
         borderWidth = myBorderWidth
-    }
+    } `additionalKeys` [
+        ((0, xK_Print), spawn "scrot")
+        ]
 
 myTerminal = "urxvt"
 myBorderWidth = 2
@@ -34,9 +37,9 @@ myStartupHook = do {
 myManageHook = manageDocks <+> manageHook defaultConfig
 
 -- Spacing around the edge of the screen
-screenSpacing = (Border 5 5 5 5)
+screenSpacing = (Border 10 10 10 10)
 -- Spacing around the edge of each window
-windowSpacing = (Border 5 5 5 5)
+windowSpacing = (Border 10 10 10 10)
 
 mySpacing = spacingRaw True screenSpacing True windowSpacing True
 
