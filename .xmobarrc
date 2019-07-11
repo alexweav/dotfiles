@@ -10,7 +10,7 @@ Config {
 
     sepChar = "%",
     alignSep = "}{",
-    template = "%StdinReader% }{ %battery% | %date%",
+    template = "%StdinReader% }{ %memory% | %battery% | %date%",
 
     commands = [
         Run StdinReader,
@@ -26,7 +26,15 @@ Config {
             "-o", "<left>% (<timeleft> left)",
             "-O", "<left>% Charging...",
             "-i", "<left>% Charged!"
-        ] 50
+        ] 50,
+        Run Memory [
+            "--template", "Mem: <usedratio>%",
+            "--Low", "20",
+            "--High", "90",
+            "--low", "darkgreen",
+            "--normal", "darkorange",
+            "--high", "darkred"
+        ] 10
     ]
 }
 
