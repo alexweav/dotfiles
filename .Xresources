@@ -7,8 +7,8 @@ URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
+URxvt.depth: 32
 URxvt.iso14755: false
 
-URxvt*transparent: true
-URxvt*shading: 25
+URxvt.background: rgba:0000/0000/0000/cccc
 
