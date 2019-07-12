@@ -9,6 +9,7 @@ import XMonad.Util.EZConfig
 import XMonad.Util.Run
 
 main = do
+    spawn "compton"
     xmobarPipe <- spawnPipe "xmobar"
     xmonad $ defaultConfig {
         manageHook = myManageHook,
