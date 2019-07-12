@@ -14,6 +14,9 @@ fi
 # Use ~/.Xresources for overrides
 xrdb ~/.Xresources
 
+# Enable compositing
+xcompmgr -c &
+
 # Set background
 ~/.fehbg &
 
