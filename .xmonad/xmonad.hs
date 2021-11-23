@@ -1,6 +1,7 @@
 import XMonad
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
@@ -11,7 +12,7 @@ import XMonad.Util.Run
 main = do
     spawn "compton"
     xmobarPipe <- spawnPipe "xmobar"
-    xmonad $ defaultConfig {
+    xmonad $ ewmh $ defaultConfig {
         manageHook = myManageHook,
         layoutHook = myLayoutHook,
         handleEventHook = myHandleEventHook,
@@ -46,7 +47,7 @@ mySpacing = spacingRaw True screenSpacing True windowSpacing True
 
 myLayoutHook = avoidStruts $ mySpacing $ smartBorders $ layoutHook defaultConfig
 
-myHandleEventHook = handleEventHook defaultConfig <+> docksEventHook
+myHandleEventHook = handleEventHook defaultConfig <+> docksEventHook <+> fullscreenEventHook
 
 -- Uses a pipe to send info to xmobar
 myLogHook xmobarPipe = do {
