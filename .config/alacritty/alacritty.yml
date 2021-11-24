@@ -1,7 +1,7 @@
 live_config_reload: true
 
 font:
-  size: 10.0
+  size: 8.0
 
 background_opacity: 0.8
 
