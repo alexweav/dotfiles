@@ -17,5 +17,5 @@ xrdb ~/.Xresources
 # Set background
 ~/.fehbg &
 
-exec xmonad
+exec i3
 
