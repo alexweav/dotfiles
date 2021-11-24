@@ -96,7 +96,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.blue}
 format-padding = 1
-label = mem:%percentage_used%%
+label = %percentage_used%%
 
 [module/filesystem]
 type = internal/fs
