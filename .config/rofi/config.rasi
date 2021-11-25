@@ -1,0 +1,5 @@
+configuration {
+    // Good themes:
+    // Arc-Dark, dmenu, fancy, glue_pro_blue, gruvbox-dark-soft, iggy (lol), lb, Monokai, Pop-Dark, purple, sidebar, solarized
+    theme: "glue_pro_blue";
+}
