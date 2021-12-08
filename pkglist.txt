@@ -6,6 +6,7 @@ picom
 rofi
 ttf-dejavu
 ttf-font-awesome
+xautolock
 xorg-server
 xorg-xinit
 

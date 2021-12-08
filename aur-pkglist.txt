@@ -1,3 +1,4 @@
+i3lock-color
 polybar
 ttf-material-design-icons
 

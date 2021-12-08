@@ -15,9 +15,8 @@ exec --no-startup-id dex --autostart --environment i3
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# Use xautolock to launch the lock screen after being idle for a while.
+exec --no-startup-id xautolock -time 10 -locker '~/.config/i3lock/lock.sh'
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -43,6 +42,9 @@ set $right l
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+floating_minimum_size 450x450
+floating_maximum_size 1500x1500
 
 # start a terminal
 bindsym $mod+Return exec alacritty
