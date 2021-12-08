@@ -1,5 +1,10 @@
+alacritty
+feh
 i3-gaps
 picom
 rofi
+ttf-dejavu
 ttf-font-awesome
+xorg-server
+xorg-xinit
 
