@@ -15,3 +15,5 @@ URxvt.shading: 20
 URxvt.background: rgba:0000/0000/0000/cccc
 URxvt.foreground: #eeeeee
 
+Xft.dpi: 240
+
