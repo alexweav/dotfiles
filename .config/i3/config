@@ -18,6 +18,12 @@ exec --no-startup-id dex --autostart --environment i3
 # Use xautolock to launch the lock screen after being idle for a while.
 exec --no-startup-id xautolock -time 10 -locker '~/.config/i3lock/lock.sh'
 
+# Configure monitors.
+exec --no-startup-id ~/.xrandr
+
+# Set background after monitors are laid out.
+exec --no-startup-id ~/.fehbg
+
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
