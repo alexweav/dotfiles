@@ -1,2 +1,5 @@
 #!/bin/sh
-xrandr --output HDMI-1 --mode 1920x1080 --rotate normal --scale 2x2
+xrandr \
+	--output eDP-1 --auto --scale 0.9999x0.9999 \
+	--output HDMI-1 --mode 1920x1080 --rotate normal --scale 2x2
+
