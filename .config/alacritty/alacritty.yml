@@ -1,7 +1,23 @@
 live_config_reload: true
 
 font:
-  size: 8.0
+  size: 10.0
 
-background_opacity: 0.8
+background_opacity: 0.75
+
+window:
+  padding:
+    x: 10
+    y: 10
+  dynamic_padding: true
+  decorations: full
+
+cursor:
+  style:
+    shape: Beam
+    blinking: Always
+  blink_interval: 500
+  unfocused_hollow: true
+  thickness: 0.15
+
 
