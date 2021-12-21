@@ -1,4 +1,5 @@
 i3lock-color
+nordic-wallpapers
 polybar
 ttf-material-design-icons
 

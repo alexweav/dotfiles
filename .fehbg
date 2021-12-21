@@ -1,3 +1,3 @@
 #!/bin/sh
-feh --no-fehbg --bg-scale '/home/alexweav/pictures/red-eclipse.jpg'
+feh --no-fehbg --bg-scale '/usr/share/backgrounds/nordic-wallpapers/cpu_city.png'
 
