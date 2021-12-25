@@ -12,3 +12,10 @@ xorg.conf -> /etc/X11/xorg.conf
 
 .config/ -> ~/.config
 
+## Dependencies
+
+Install dependencies with:
+```
+pacman -S --needed - < pkglist.txt
+```
+
