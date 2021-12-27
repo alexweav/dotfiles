@@ -45,3 +45,11 @@ export CLICOLOR=1
 # Enable color for ls
 ls --color=auto &> /dev/null && alias ls='ls --color=auto'
 
+PATH=/home/alexweav/.cargo/bin:$PATH
+
+
+PATH="/home/alexweav/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/alexweav/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/alexweav/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/alexweav/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/alexweav/perl5"; export PERL_MM_OPT;
