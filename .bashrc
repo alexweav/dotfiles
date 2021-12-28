@@ -6,8 +6,8 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-# PS1='[\u@\h \W]\$ '
-PS1="\[\033[38;5;88m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h:\[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]\[\033[38;5;15m\] > \[$(tput sgr0)\]"
+
+PS1="\n\[\033[0;31m\]\342\224\214\342\224\200$([[ $? != 0 ]] && echo "[\[\033[0;37m\]\342\234\227\[\033[0;31m\]]\342\224\200")[\[\033[0;34m\]\T \$(date +%m.%d.%y)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\u\[\033[0;31m\]]\342\224\200\[\033[0;31m\][\[\033[0;33m\]\$PWD\[\033[0;31m\]]\n\342\224\224\342\224\200\342\224\200>\[\033[0m\]"
 
 # Bash won't get SIGWINCH if another process is in the foreground.
 # Enable checkwinsize so that bash will check the terminal size when
