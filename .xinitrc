@@ -14,6 +14,12 @@ fi
 # Use ~/.Xresources for overrides
 xrdb ~/.Xresources
 
+# Disable screen blanking
+xset s off
+
+# Disable DPMS (display power saving) due to sync issues with thinkpad
+xset -dpms
+
 # Set background
 ~/.fehbg &
 
