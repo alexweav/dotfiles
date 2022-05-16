@@ -21,3 +21,14 @@ shopt -s histappend
 # Try to keep environment pollution down, EPA loves us.
 unset safe_term match_lhs
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/alexweav/google-cloud-sdk/google-cloud-sdk/path.bash.inc' ]; then . '/home/alexweav/google-cloud-sdk/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/alexweav/google-cloud-sdk/google-cloud-sdk/completion.bash.inc' ]; then . '/home/alexweav/google-cloud-sdk/google-cloud-sdk/completion.bash.inc'; fi
+
+# Update PATH and GOPATH
+export GOPATH="$HOME/go"
+PATH="$GOPATH/bin:$PATH"
+

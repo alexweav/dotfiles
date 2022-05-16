@@ -1,3 +1,6 @@
 #!/bin/sh
-feh --no-fehbg --bg-scale '/usr/share/backgrounds/nordic-wallpapers/cpu_city.png'
+feh --no-fehbg \
+    --bg-scale '/usr/share/backgrounds/nordic-wallpapers/cpu_city.png' \
+    --bg-scale '/usr/share/backgrounds/nordic-wallpapers/cpu_city.png' \
+    --bg-scale '/usr/share/backgrounds/nordic-wallpapers/cpu_city_rotated.png'
 
