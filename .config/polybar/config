@@ -42,8 +42,8 @@ enable-ipc = true
 
 font-0 = Fira Code Nerd Font:pixelsize=10;4
 font-1 = Material Icons:pixelsize=13:Regular:antialias=true;4
-font-2 = FontAwesome5Free:pixelsize=13;antialias=false;4
-font-3 = FontAwesome5Free:pixelsize=13:style=Solid:size=11:antialias=false;4
+font-2 = Font Awesome 6 Free:pixelsize=13;antialias=false;4
+font-3 = Font Awesome 6 Free:pixelsize=13:style=Solid:size=11:antialias=false;4
 font-4 = Material Design Icons:pixelsize=13:antialias=true;4
 
 tray-detached = false
