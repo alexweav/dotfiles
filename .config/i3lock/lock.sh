@@ -15,6 +15,8 @@ verif_inner_color=5f5f5f66
 wrong_color=f82a11aa
 login_box=00000066
 login_shadow=00000000
+layout_color=ffffffff
+modif_color=d23c3dff
 
 font_lg=32
 font_md=16
@@ -55,14 +57,24 @@ lock() {
     --greeter-size=$font_md \
     --layout-pos="ix-265:iy+32" \
     --layout-align=1 \
+    --layout-color=$layout_color \
     --layout-size=$font_sm \
     --keylayout "${keylayout:-0}" \
     --indicator \
-    --verif-text="" \
-    --wrong-text="" \
-    --modif-pos="ix+45:iy-35" \
+    --verif-pos="ix+45:iy-35" \
+    --verif-align=2 \
+    --verif-text="Verifying..." \
+    --verif-color=$verif_color \
+    --verif-size=$font_sm \
+    --wrong-pos="ix+45:iy-35" \
+    --wrong-align=2 \
+    --wrong-text="Failure!" \
+    --wrong-color=$wrong_color \
+    --wrong-size=$font_sm \
+    --modif-pos="ix+45:iy+43" \
     --modif-align=2 \
     --modif-size=$font_sm \
+    --modif-color=$modif_color \
     --noinput-text="" \
     --pass-media-keys \
     --pass-screen-keys \
