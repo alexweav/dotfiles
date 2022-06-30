@@ -18,6 +18,12 @@ login_shadow=00000000
 layout_color=ffffffff
 modif_color=d23c3dff
 
+bg_images=(
+    "/usr/share/backgrounds/nordic-wallpapers/cpu_city.png"
+    "/usr/share/backgrounds/nordic-wallpapers/cpu_city.png"
+    "/usr/share/backgrounds/nordic-wallpapers/cpu_city_rotated.png"
+)
+
 font_lg=32
 font_md=16
 font_sm=12
@@ -88,7 +94,36 @@ init() {
     FEH_INSTALLED=false && [[ -e "$(command -v feh)" ]] && FEH_INSTALLED=true
     mkdir -p "$CACHE_DIR" &> /dev/null
     mkdir -p "$CUR_DIR" &> /dev/null
+
+    get_wall_list ${bg_images[@]}
+    echo "Original image(s): ${WALL_LIST[*]##*/}"
+
     create_login_box
+
+    for ((i=0; i<${#DISPLAY_LIST[@]}; i++)); do
+        display=${DISPLAY_LIST[$i]}
+        wall=${WALL_LIST[$i]}
+        if echo "$wall" | grep -E -q "[[:space:]]"; then
+            wall="${wall// /\\ }"
+        fi
+
+        IFS=' ' read -r -a dinfo <<< $display
+        local id=${dinfo[0]}
+        local device=${dinfo[1]}
+        local geometry=${dinfo[2]}
+
+        read -r -a cols <<< ${geometry//[x+-]/ }
+        local position="${geometry#*"${cols[1]}"}"
+        local resolution="${geometry%"${position}"*}"
+
+    done
+}
+
+escape_spaces() {
+    local raw=$1
+    if echo "$raw" | grep -E -q "[[:space:]]"; then
+        return "${raw// /\\ }"
+    fi
 }
 
 get_display_info() {
@@ -102,6 +137,35 @@ get_display_info() {
     done
     echo "Detected $count displays..."
     echo $DISPLAY_LIST
+}
+
+get_wall_list() {
+    local paths=("$@")
+    declare -ga WALL_LIST
+
+    if [ ${#paths[@]} -lt ${#DISPLAY_LIST[@]} ]; then
+        echo "${#paths[@]} images provided for ${#DISPLAY_LIST[@]} displays. An image must be provided for each display."
+    fi
+
+    for ((i=0; i<${#DISPLAY_LIST[@]}; i++)); do
+        get_image ${paths[$i]}
+    done
+}
+
+get_image() {
+    local path="$1"
+
+    if [ -f "$path" ]; then
+        WALL_LIST+=("$path")
+        return
+    elif [ -d "$path" ]; then
+        dir=("$path"/*)
+        rdir=${dir[RANDOM % ${#dir[@]}]}
+        get_image $rdir
+    else
+        echo "invalid path: $path"
+        exit 1
+    fi
 }
 
 create_login_box() {
