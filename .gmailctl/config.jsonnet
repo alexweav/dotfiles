@@ -56,6 +56,9 @@ local lib = import 'gmailctl.libsonnet';
     {
       name: "github/team-prs"
     },
+    {
+      name: "newsletters"
+    },
   ],
 
   rules: [
@@ -216,6 +219,17 @@ local lib = import 'gmailctl.libsonnet';
       },
       actions: {
         labels: ["github/team-prs"]
+      }
+    },
+    {
+      filter: {
+        or: [
+          { from: "mail@quastor.org" },
+          { from: "kale@hackernewsletter.com" }
+        ]
+      },
+      actions: {
+        labels: ["newsletters"]
       }
     }
   ]
