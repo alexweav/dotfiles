@@ -33,6 +33,9 @@ local lib = import 'gmailctl.libsonnet';
       name: "internal/eng"
     },
     {
+      name: "internal/invites"
+    },
+    {
       name: "github"
     },
     {
@@ -48,6 +51,9 @@ local lib = import 'gmailctl.libsonnet';
       name: "github/merged"
     },
     {
+      name: "github/release"
+    },
+    {
       name: "github/review"
     },
     {
@@ -57,7 +63,13 @@ local lib = import 'gmailctl.libsonnet';
       name: "github/team-prs"
     },
     {
+      name: "github/team-repo"
+    },
+    {
       name: "newsletters"
+    },
+    {
+      name: "hr"
     },
   ],
 
@@ -137,12 +149,46 @@ local lib = import 'gmailctl.libsonnet';
       filter: {
         and: [
           { from: "notifications@github.com" },
-          { query: "\"Merged\" \"into main.\"" }
+          { query: "\"Merged\" \"into main.\"" },
         ]
       },
       actions: {
         labels: ["github/merged"]
       }
+    },
+    {
+      filter: {
+        and: [
+          { from: "notifications@github.com" },
+          { query: "\"Merged\" \"into master.\"" },
+        ]
+      },
+      actions: {
+        labels: ["github/merged"]
+      }
+    },
+
+    {
+        filter: {
+            and: [
+                { from: "notifications@github.com" },
+                { query: "\"Closed\" \"as completed.\""},
+            ]
+        },
+        actions: {
+            labels: ["github/merged"]
+        }
+    },
+    {
+        filter: {
+            and: [
+                { from: "notifications@github.com" },
+                { has: "Released by: grafanabot" },
+            ]
+        },
+        actions: {
+            labels: ["github/release"]
+        }
     },
     {
       filter: {
@@ -231,6 +277,57 @@ local lib = import 'gmailctl.libsonnet';
       actions: {
         labels: ["newsletters"]
       }
-    }
+    },
+    {
+        filter: {
+            has: "invite.ics"
+        },
+        actions: {
+            labels: ["internal/invites"]
+        }
+    },
+    {
+        filter: {
+            or: [
+                { from: "support@justworks.com" },
+                { from: "no-reply@justworks.com" }
+            ]
+        },
+        actions: {
+            labels: ["hr"]
+        }
+    },
+    {
+        filter: {
+            from: "notifications@15five.com"
+        },
+        actions: {
+            labels: ["hr"]
+        }
+    },
+    {
+        filter: {
+            from: "no-reply@greenhouse.io"
+        },
+        actions: {
+            labels: ["hr"]
+        }
+    },
+    {
+        filter: {
+            from: "concierge@expensify.com"
+        },
+        actions: {
+            labels: ["hr"]
+        }
+    },
+    {
+        filter: {
+            to: "alerting-squad@noreply.github.com"
+        },
+        actions: {
+            labels: ["github/team-repo"]
+        }
+    },
   ]
 }
