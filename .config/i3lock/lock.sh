@@ -116,7 +116,16 @@ init() {
         local position="${geometry#*"${cols[1]}"}"
         local resolution="${geometry%"${position}"*}"
 
+        local path="$CACHE_DIR/$id-$device"
+        purge_cache $path
+
+        echo "Processing display $device $id"
+        echo "Resolution $resolution"
+
+        resize_and_render $wall $path $resolution
     done
+
+    purge_cache "$CUR_DIR"
 }
 
 escape_spaces() {
@@ -168,6 +177,21 @@ get_image() {
     fi
 }
 
+resize_and_render() {
+    local base=$1
+    local cache=$2
+    local resolution=$3
+
+    RESIZED_LOC="$cache/resize.png"
+
+    echo "Resizing base image..."
+    eval convert "$base" \
+        -resize "$resolution""^" \
+        -gravity center \
+        -extent "$resolution" \
+        "$RESIZED_LOC"
+}
+
 create_login_box() {
     RECTANGLE="$CUR_DIR/rectangle.png"
     local shadow="$CUR_DIR/shadow.png"
@@ -181,6 +205,13 @@ create_login_box() {
         "$RECTANGLE" "$shadow" -alpha Set "$shadow"
     convert "$shadow" "$RECTANGLE" -geometry +10+10 -composite "$RECTANGLE"
     [[ "$shadow" ]] && rm "$shadow"
+}
+
+purge_cache() {
+    if [[ -d "$1" ]]; then
+        rm -r "$1"
+    fi
+    mkdir -p "$1"
 }
 
 init
