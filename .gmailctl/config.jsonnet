@@ -85,7 +85,10 @@ local lib = import 'gmailctl.libsonnet';
     },
     {
       filter: {
-        from: "comments-noreply@docs.google.com"
+        or: [
+          { from: "comments-noreply@docs.google.com" },
+          { from: "drive-shares-dm-noreply@google.com" },
+        ]
       },
       actions: {
         labels: ["gdocs"]
@@ -130,6 +133,7 @@ local lib = import 'gmailctl.libsonnet';
         ]
       },
       actions: {
+        markRead: true,
         labels: ["github/rollout"]
       }
     },
